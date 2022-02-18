@@ -1,0 +1,10 @@
+# cache
+StopWatch.cache/
+
+#vivado stuffs
+StopWatch.ip_user_files/
+StopWatch.sim/
+StopWatch.hw/
+
+#Project Configuration
+StopWatch.xpr
