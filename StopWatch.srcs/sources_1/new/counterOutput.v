@@ -26,6 +26,6 @@ module counterStateTransition(   S,           // Counter present state
     input  [3:0] S;
     output  carryOut;
     
-    assign carryOut = S[3] & ~S[2} & ~S[1] & S[0]; 
+    assign carryOut = S[3] & ~S[2] & ~S[1] & S[0]; 
 
 endmodule
