@@ -20,15 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module counterStateTransition(   s3,           // MSB of the current state
-                                 s2,
-                                 s1,
-                                 s0,           // LSB of the current state
+module counterStateTransition(   S,           // Counter present state
                                  carryOut      // Counter overflow
                               );
-    input   s3, s2, s1, s0;
+    input  [3:0] S;
     output  carryOut;
     
-    assign carryOut = s3 & ~s2 & ~s1 & s0; 
+    assign carryOut = S[3] & ~S[2} & ~S[1] & S[0]; 
 
 endmodule
