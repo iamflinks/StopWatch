@@ -30,7 +30,7 @@ module ucomp_16bit(  a0,
     input  [15:0] a0;
     input  [15:0] b0;
     output       Greater, Equal, Less;
-    wire [15:0] G, E, L;
+    wire [3:0] G, E, L;
     
     ucomp_4bit comp[3:0] (a0, b0, G, E, L);
     
