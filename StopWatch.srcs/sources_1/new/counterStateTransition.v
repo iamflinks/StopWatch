@@ -20,24 +20,40 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module counterStateTransition(   s3,     // MSB of the current state
-                                 s2,
-                                 s1,
-                                 s0,     // LSB of the current state
-                                 n3,     // MSB of the next state
-                                 n2,
-                                 n1,
-                                 n0      // MSB of the next state
+module counterStateTransition(   S,     // The current state vector
+                                 N,     // The vector of next state
                               );
-    input   s3, s2, s1, s0;
-    output  n3, n2, n1, n0;
+    input   [3:0] S;
+    output  [3:0] N;
     
-    assign n3 = (~s3 & s2 & s1 & s0) | (s3 & ~s2 & ~s1 & ~s0);
+    assign N[3] = (~S[3] & S[2] & S[1] & S[0]) | (S[3] & ~S[2] & ~S[1] & ~S[0]);
     
-    assign n2 = (~s3 & ~s2 & s1 & s0) | (~s3 & s2 & ~s1) | (~s3 & s2 & ~s0);
+    assign N[2] = (~S[3] & ~S[2] & S[1] & S[0]) | (~S[3] & S[2] & ~S[1]) | (~S[3] & S[2] & ~S[0]);
     
-    assign n1 = (~s3 & ~s1 & s0) | (~s3 & s1 & ~s0);
+    assign N[1] = (~S[3] & ~S[1] & S[0]) | (~S[3] & S[1] & ~S[0]);
     
-    assign n0 = (~s3 & ~s0) | (~s2 & ~s1 & ~s0);
+    assign N[0] = (~S[3] & ~S[0]) | (~S[2] & ~S[1] & ~S[0]);
 
 endmodule
+
+//module counterStateTransition(   s3,     // MSB of the current state
+//                                 s2,
+//                                 s1,
+//                                 s0,     // LSB of the current state
+//                                 n3,     // MSB of the next state
+//                                 n2,
+//                                 n1,
+//                                 n0      // MSB of the next state
+//                              );
+//    input   s3, s2, s1, s0;
+//    output  n3, n2, n1, n0;
+    
+//    assign n3 = (~s3 & s2 & s1 & s0) | (s3 & ~s2 & ~s1 & ~s0);
+    
+//    assign n2 = (~s3 & ~s2 & s1 & s0) | (~s3 & s2 & ~s1) | (~s3 & s2 & ~s0);
+    
+//    assign n1 = (~s3 & ~s1 & s0) | (~s3 & s1 & ~s0);
+    
+//    assign n0 = (~s3 & ~s0) | (~s2 & ~s1 & ~s0);
+
+//endmodule
