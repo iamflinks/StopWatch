@@ -1,17 +1,17 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: University of New Hampshire
+// Engineer: Femi Olugbon
 // 
-// Create Date: 02/18/2022 07:59:15 AM
-// Design Name: 
+// Create Date: 02/18/2022 08:35:46 AM
+// Design Name: StopWatch
 // Module Name: mux2x1_16bit
-// Project Name: 
-// Target Devices: 
+// Project Name: StopWathc Design
+// Target Devices: Xilinx Artix-7 FPGA
 // Tool Versions: 
 // Description: 
 // 
-// Dependencies: 
+// Dependencies: mux2x1_1bit
 // 
 // Revision:
 // Revision 0.01 - File Created
@@ -20,7 +20,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module mux2x1_16bit(
+module mux2x1_16bit(  input0,
+                      input1,
+                      sel,
+                      out
+                      );
+    input  [15:0]  input0;
+    input  [15:0]  input1;
+    input          sel;
+    output [15:0]  out;
+    
+    mux2x1_1bit mux16[15:0] (input0, input1, sel, out);
 
-    );
+
 endmodule
