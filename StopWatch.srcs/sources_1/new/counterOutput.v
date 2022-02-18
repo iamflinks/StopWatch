@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module counterStateTransition(   S,           // Counter present state
+module counterOutput(   S,           // Counter present state
                                  carryOut      // Counter overflow
                               );
     input  [3:0] S;
