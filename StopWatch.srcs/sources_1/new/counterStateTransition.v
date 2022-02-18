@@ -30,7 +30,7 @@ module counterStateTransition(   s3,     // MSB of the current state
                                  n0      // MSB of the next state
                               );
     input   s3, s2, s1, s0;
-    output  n3, s2, s1, s0;
+    output  n3, n2, n1, n0;
     
     assign n3 = (~s3 & s2 & s1 & s0) | (s3 & ~s2 & ~s1 & ~s0);
     
