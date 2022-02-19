@@ -33,6 +33,7 @@ module bcdCounter(        clk,        // clock signal
     wire [3:0] S_bar;
     wire [3:0] S;  // Counter present state
     wire [3:0] N;  // Counter next state
+    
 
     counterStateTransition trans (S, N); // Instantiate the state transition module to control the states
     
