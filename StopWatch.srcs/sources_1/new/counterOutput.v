@@ -21,8 +21,8 @@
 
 
 module counterOutput(   S,           // Counter present state
-                                 carryOut      // Counter overflow
-                              );
+                        carryOut      // Counter overflow
+                     );
     input  [3:0] S;
     output  carryOut;
     
