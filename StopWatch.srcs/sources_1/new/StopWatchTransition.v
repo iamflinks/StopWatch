@@ -37,7 +37,7 @@ module StopWatchTransition(   pinCombs,
     input   [2:0] S;
     output reg  [2:0] N;
     
-    always @ (pinCombs[4] or pinCombs[3] or pinCombs[2] or pinCombs[1] or pinCombs[0]) // re-evaluate the state whenever the input changes
+    always @*  //(pinCombs[4] or pinCombs[3] or pinCombs[2] or pinCombs[1] or pinCombs[0]) // re-evaluate the state whenever the input changes
         begin
             case(pinCombs)
             
