@@ -24,8 +24,11 @@ module counterOutput(   S,           // Counter present state
                         carryOut      // Counter overflow
                      );
     input  [3:0] S;
-    output  carryOut;
+    output reg  carryOut;
     
-    assign carryOut = S[3] & ~S[2] & ~S[1] & S[0]; 
+    always @ (S[3] & ~S[2] & ~S[1] & S[0]) begin
+    
+        carryOut <= S[3] & ~S[2] & ~S[1] & S[0];
+    end
 
 endmodule
