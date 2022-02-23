@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Wed Feb 23 16:21:03 2022
+# Process ID: 27888
+# Current directory: C:/Users/olugb/OneDrive - USNH/StopWatch/StopWatch.runs/impl_1
+# Command line: vivado.exe -log StopWatch.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source StopWatch.tcl -notrace
+# Log file: C:/Users/olugb/OneDrive - USNH/StopWatch/StopWatch.runs/impl_1/StopWatch.vdi
+# Journal file: C:/Users/olugb/OneDrive - USNH/StopWatch/StopWatch.runs/impl_1\vivado.jou
+# Running On: DESKTOP-D2CUC0G, OS: Windows, CPU Frequency: 2904 MHz, CPU Physical cores: 8, Host memory: 34052 MB
+#-----------------------------------------------------------
+source StopWatch.tcl -notrace

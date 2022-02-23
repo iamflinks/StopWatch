@@ -4,7 +4,7 @@ StopWatch.cache/
 #vivado stuffs
 StopWatch.ip_user_files/
 StopWatch.sim/
-StopWatch.hw/
+# StopWatch.hw/
 
 #Project Configuration
 StopWatch.xpr
