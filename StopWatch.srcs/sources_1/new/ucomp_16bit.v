@@ -33,7 +33,8 @@ module ucomp_16bit(  a0,
     wire [3:0] G, E, L;
     
     ucomp_4bit comp[3:0] (a0, b0, G, E, L);
-    
+     
+    // Vectorized logic gate implementation
     assign Greater = G[3] | (E[3] & G[2]) | (E[3] & E[2] & G[1]) | (E[3] & E[2] & E[1] & G[0]);
     assign Equal   = E[3] &  E[2] & E[1]  & E[0];
     assign Less    = L[3] | (E[3] & L[2]) | (E[3] & E[2] & L[1]) | (E[3] & E[2] & E[1] & L[0]);
