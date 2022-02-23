@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module stopWatchStateTransition(   Start,
+module stopWatchStateTransitionOBS(   Start,
                                    Stop,
                                    Store,
                                    Reset,
@@ -30,16 +30,16 @@ module stopWatchStateTransition(   Start,
                                 );
     input Start, Stop, Store, Reset, NewRecordFlag;
     input   [2:0] S;
-    output  [2:0] N;
+    output reg  [2:0] N;
     
+    always @ (Start, Stop, Store, Reset, NewRecordFlag) begin
+    N[2] <= (~Start & Store) | (Stop & Store) | (Reset) | (S[2] & ~Start & ~Stop);
     
-    assign N[2] = (~Start & Store) | (Stop & Store) | (Reset) | (S[2] & ~Start & ~Stop);
+    N[1] <= (Stop & ~Store) | (~Start & S[1] & ~Store) | (Reset) | (~S[2] & Start & ~S[1] & ~Stop & S[0]) | (~S[2] & Start & S[1] & ~Stop & ~S[0]);
     
-    assign N[1] = (Stop & ~Store) | (~Start & S[1] & ~Store) | (Reset) | (~S[2] & Start & ~S[1] & ~Stop & S[0]) | (~S[2] & Start & S[1] & ~Stop & ~S[0]);
-    
-    assign N[0] = (~Start & ~Reset & ~S[0] &  Store) | (~Start & ~Reset & ~S[1] & S[0]) | (~Start & ~Reset & ~NewRecordFlag & S[0]) | (~Reset & ~S[1] & Stop) | 
+    N[0] <= (~Start & ~Reset & ~S[0] &  Store) | (~Start & ~Reset & ~S[1] & S[0]) | (~Start & ~Reset & ~NewRecordFlag & S[0]) | (~Reset & ~S[1] & Stop) | 
                   (~Reset & Stop & ~NewRecordFlag) | (~Reset & Stop & ~S[0]) | (~Reset & S[1] & S[0] & ~Store) | (Start & ~Reset & ~S[1] & ~S[0]) | 
                   (Start & ~Reset & S[1] & ~Stop & S[0]) | (S[2] & ~Reset & S[0]) | (S[2] & Reset & S[1]) | (S[2] & Start & ~Reset);
-    
+    end
 
 endmodule
