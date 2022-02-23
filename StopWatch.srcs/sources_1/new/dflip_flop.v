@@ -31,7 +31,7 @@ module dflip_flop(   D,              // Data input
     input D, async_set, async_reset, enable, clk;
     output reg Q, Q_bar;
 
-    always @ (posedge clk or posedge async_reset or posedge async_set)
+    always @ (posedge clk or posedge async_reset or posedge async_set) // trigger on positve edge of the clock, async_set, or async_reset signal
         begin
             if (async_reset== 1'b1)begin
                 Q     <= 1'b0;
