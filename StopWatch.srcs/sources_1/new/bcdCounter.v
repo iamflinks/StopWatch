@@ -29,12 +29,12 @@ module bcdCounter(        clk,        // clock signal
     input   clk, enable, reset;
     output carryOut;
     output [3:0] counterOut;
-    wire async_set = 1'bZ;
+    wire async_set = 1'b0;
     wire [3:0] S_bar;
     wire [3:0] S;  // Counter present state
     wire [3:0] N;  // Counter next state
     
-
+    // This submodule handles the state transition of the counter. Reset the counter when its state is 4'b1001
     counterStateTransition trans (S, N); // Instantiate the state transition module to control the states
     
     dflip_flop countBCD [3:0] (N, async_set, reset, enable, clk, S, S_bar);  // instantiate the D flip-flop to pass the next async_set
