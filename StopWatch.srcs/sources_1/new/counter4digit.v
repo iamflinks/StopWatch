@@ -28,13 +28,12 @@ module counter4digit(     clk,        // clock signal
     input   clk, enable, reset;
     output [15:0] counterOut;
     
-    wire [3:0] carryOut;
+    wire carry0, carry1, carry2, carry3;
     
-    bcdCounter digit0 (clk, enable, reset, carryOut[0], counterOut[3:0]);  // Counter for digit zero
-    bcdCounter digit1 (clk, carryOut[0], reset, carryOut[1], counterOut[7:4]);  // Counter for digit one
-    bcdCounter digit2 (clk, carryOut[1], reset, carryOut[2], counterOut[11:8]);  // Counter for digit two
-    bcdCounter digit3 (clk, carryOut[2], reset, carryOut[3], counterOut[15:12]);  // Counter for digit three
+    // Use four BCD counter to build four digit counter
+    bcdCounter digit0 (clk, enable, reset, carry0, counterOut[3:0]);  // Counter for digit zero
+    bcdCounter digit1 (clk, carry0, reset, carry1, counterOut[7:4]);  // Counter for digit one, only enabled when digit0 overflow
+    bcdCounter digit2 (clk, carry0 & carry1, reset, carry2, counterOut[11:8]);  // Counter for digit two, enabled when digit0 and digit1 overflow
+    bcdCounter digit3 (clk, carry0 & carry1 & carry2, reset, carry3, counterOut[15:12]);  // Counter for digit three, enabled when digit0 and digit1 and digit2 overflow
 
 endmodule
-
-
